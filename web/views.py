@@ -1,6 +1,8 @@
 from rest_framework import generics
-from .models import Student, StudentResult
-from .serializers import StudentSerializer, StudentResultSerializer
+from .models import Student, StudentResult,Teacher, Subject
+from .serializers import StudentSerializer, StudentResultSerializer,TeacherSerializer, SubjectSerializer
+from django.db.models import Q
+
 
 # ================== Students ==================
 class StudentListCreateAPIView(generics.ListCreateAPIView):
@@ -95,3 +97,55 @@ class StudentResultListCreateAPIView(generics.ListCreateAPIView):
 class StudentResultRetrieveUpdateDestroyAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = StudentResult.objects.all()
     serializer_class = StudentResultSerializer
+
+
+
+
+
+class TeacherListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Teacher.objects.all()
+    serializer_class = TeacherSerializer
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        params = self.request.query_params
+
+        filters = Q()
+        if "first_name" in params:
+            filters &= Q(first_name__icontains=params["first_name"])
+        if "last_name" in params:
+            filters &= Q(last_name__icontains=params["last_name"])
+        if "specialization" in params:
+            filters &= Q(specialization__icontains=params["specialization"])
+        if "job_title" in params:
+            filters &= Q(job_title__icontains=params["job_title"])
+        if "email" in params:
+            filters &= Q(email__icontains=params["email"])
+        if "phone_number" in params:
+            filters &= Q(phone_number__icontains=params["phone_number"])
+
+        return queryset.filter(filters)
+
+
+class TeacherDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Teacher.objects.all()
+    serializer_class = TeacherSerializer
+
+
+class SubjectListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Subject.objects.all()
+    serializer_class = SubjectSerializer
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        params = self.request.query_params
+        if "name" in params:
+            queryset = queryset.filter(name__icontains=params["name"])
+        if "code" in params:
+            queryset = queryset.filter(code__icontains=params["code"])
+        return queryset
+
+
+class SubjectDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Subject.objects.all()
+    serializer_class = SubjectSerializer

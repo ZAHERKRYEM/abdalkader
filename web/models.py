@@ -43,3 +43,40 @@ class StudentResult(models.Model):
     
     def __str__(self):
         return f"{self.student} - {self.academic_year}"
+
+
+
+class Teacher(models.Model):
+    serial_number = models.AutoField(primary_key=True)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
+    father_name = models.CharField(max_length=100, blank=True, null=True)
+    mother_name = models.CharField(max_length=100, blank=True, null=True)
+
+    birth_date = models.DateField(blank=True, null=True)
+    birth_place = models.CharField(max_length=150, blank=True, null=True)
+    nationality = models.CharField(max_length=100, blank=True, null=True)
+
+    hire_date = models.DateField(blank=True, null=True)
+    job_title = models.CharField(max_length=150, blank=True, null=True)
+    qualification = models.CharField(max_length=200, blank=True, null=True)
+    specialization = models.CharField(max_length=150, blank=True, null=True)
+
+    phone_number = models.CharField(max_length=20, blank=True, null=True)
+    email = models.EmailField(blank=True, null=True)
+    address = models.CharField(max_length=250, blank=True, null=True)
+
+    is_active = models.BooleanField(default=True)
+    notes = models.TextField(blank=True, null=True)
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
+
+
+class Subject(models.Model):
+    name = models.CharField(max_length=150)
+    code = models.CharField(max_length=50, unique=True)
+    teachers = models.ManyToManyField(Teacher, related_name="subjects", blank=True)
+
+    def __str__(self):
+        return self.name
