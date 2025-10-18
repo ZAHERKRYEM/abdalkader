@@ -2,6 +2,7 @@ from rest_framework import generics
 from .models import Student, StudentResult,Teacher, Subject
 from .serializers import StudentSerializer, StudentResultSerializer,TeacherSerializer, SubjectSerializer
 from django.db.models import Q
+<<<<<<< HEAD
 import random, string
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -12,6 +13,8 @@ from web.models import Student, Teacher
 from web.serializers import StudentSerializer, TeacherSerializer, UserCreateSerializer
 
 CustomUser = get_user_model()
+=======
+>>>>>>> 16330f09d40fdf7114f9bdfafeddda4cc1a8565e
 
 
 # ================== Students ==================
@@ -159,6 +162,7 @@ class SubjectListCreateAPIView(generics.ListCreateAPIView):
 class SubjectDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
     queryset = Subject.objects.all()
     serializer_class = SubjectSerializer
+<<<<<<< HEAD
 
 
 
@@ -241,3 +245,5 @@ class RegisterView(APIView):
             data["teacher_data"] = TeacherSerializer(teacher).data
 
         return Response(data, status=status.HTTP_201_CREATED)
+=======
+>>>>>>> 16330f09d40fdf7114f9bdfafeddda4cc1a8565e

@@ -1,7 +1,12 @@
 from rest_framework import serializers
+<<<<<<< HEAD
 from .models import Student, StudentResult, Teacher, Subject,CustomUser
 
 import random, string
+=======
+from .models import Student, StudentResult, Teacher, Subject
+
+>>>>>>> 16330f09d40fdf7114f9bdfafeddda4cc1a8565e
 
 
 class StudentResultSerializer(serializers.ModelSerializer):
@@ -30,6 +35,7 @@ class TeacherSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Teacher
+<<<<<<< HEAD
         fields = "__all__"
 
 
@@ -53,3 +59,6 @@ class UserCreateSerializer(serializers.ModelSerializer):
         )
         user.generated_password = password
         return user
+=======
+        fields = "__all__"
+>>>>>>> 16330f09d40fdf7114f9bdfafeddda4cc1a8565e

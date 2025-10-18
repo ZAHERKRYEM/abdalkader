@@ -38,11 +38,16 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "rest_framework",
+<<<<<<< HEAD
     'rest_framework.authtoken',
 
  "corsheaders",
     "web",
     "mobile"
+=======
+ "corsheaders",
+    "web"
+>>>>>>> 16330f09d40fdf7114f9bdfafeddda4cc1a8565e
 ]
 
 MIDDLEWARE = [
@@ -133,6 +138,7 @@ REST_FRAMEWORK = {
         "django_filters.rest_framework.DjangoFilterBackend",
         "rest_framework.filters.SearchFilter",
         "rest_framework.filters.OrderingFilter",
+<<<<<<< HEAD
     ],
         'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
@@ -140,3 +146,6 @@ REST_FRAMEWORK = {
     }
 
 AUTH_USER_MODEL = 'web.CustomUser'
+=======
+    ],}
+>>>>>>> 16330f09d40fdf7114f9bdfafeddda4cc1a8565e
