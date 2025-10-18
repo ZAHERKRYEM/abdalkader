@@ -6,7 +6,6 @@ from .views import (
     TeacherDetailAPIView,
     SubjectListCreateAPIView,
     SubjectDetailAPIView,
-<<<<<<< HEAD
     RegisterView
 )
 
@@ -14,11 +13,6 @@ from .views import (
 urlpatterns = [
 
     path("api/register/",RegisterView.as_view()),
-=======
-)
-
-urlpatterns = [
->>>>>>> 16330f09d40fdf7114f9bdfafeddda4cc1a8565e
     # Students
     path("api/students/", StudentListCreateAPIView.as_view(), name="student-list-create"),
     path("api/students/<int:pk>/", StudentRetrieveUpdateDestroyAPIView.as_view(), name="student-detail"),

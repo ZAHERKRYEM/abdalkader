@@ -18,10 +18,6 @@ from django.contrib import admin
 from django.urls import path,include
 urlpatterns = [
     path('admin/', admin.site.urls),
-<<<<<<< HEAD
     path('',include("web.urls")),
     path('mobile/',include("mobile.urls"))
-=======
-    path('',include("web.urls"))
->>>>>>> 16330f09d40fdf7114f9bdfafeddda4cc1a8565e
 ]

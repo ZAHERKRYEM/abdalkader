@@ -1,5 +1,4 @@
 from django.db import models
-<<<<<<< HEAD
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
 
 
@@ -49,12 +48,6 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
 class Student(models.Model):
     id_number = models.CharField(max_length=20,unique=True)  # الرقم التسلسلي
-=======
-
-
-class Student(models.Model):
-    serial_number = models.AutoField(primary_key=True)  # الرقم التسلسلي
->>>>>>> 16330f09d40fdf7114f9bdfafeddda4cc1a8565e
     old_registration_number = models.CharField(max_length=50, blank=True, null=True)  # رقم القيد السابق
     
     first_name = models.CharField(max_length=100)   # اسم الطالب
@@ -99,11 +92,7 @@ class StudentResult(models.Model):
 
 
 class Teacher(models.Model):
-<<<<<<< HEAD
     id_number = models.CharField(max_length=20,unique=True)
-=======
-    serial_number = models.AutoField(primary_key=True)
->>>>>>> 16330f09d40fdf7114f9bdfafeddda4cc1a8565e
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     father_name = models.CharField(max_length=100, blank=True, null=True)
